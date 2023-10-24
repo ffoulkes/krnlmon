@@ -54,13 +54,17 @@ if(NOT DEFINED SAI_SOURCE_DIR)
   unset(_path)
 endif()
 
-# If we're a submodule of the networking-recipe superproject, add its
-# cmake modules directory to our module search path.
-get_filename_component(_path "${PROJECT_SOURCE_DIR}/../../cmake" REALPATH)
-if(EXISTS "${_path}/SelectTdiTarget.cmake")
-  list(APPEND CMAKE_MODULE_PATH ${_path})
+if(DEFINED MODULE_PATH)
+  list(APPEND CMAKE_MODULE_PATH ${MODULE_PATH})
+else()
+  # If we're a submodule of the networking-recipe superproject, add its
+  # cmake modules directory to our module search path.
+  get_filename_component(_path "${PROJECT_SOURCE_DIR}/../../cmake" REALPATH)
+  if(EXISTS "${_path}/SelectTdiTarget.cmake")
+    list(APPEND CMAKE_MODULE_PATH ${_path})
+  endif()
+  unset(_path)
 endif()
-unset(_path)
 
 #-----------------------------------------------------------------------
 # Target selection
