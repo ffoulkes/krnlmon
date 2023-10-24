@@ -17,6 +17,9 @@ include(GNUInstallDirs)
 
 message(STATUS "Standalone krnlmon build")
 
+include(CMakePrintHelpers)
+cmake_print_variables(CMAKE_MODULE_PATH)
+
 #-----------------------------------------------------------------------
 # Build type
 #-----------------------------------------------------------------------
@@ -54,17 +57,13 @@ if(NOT DEFINED SAI_SOURCE_DIR)
   unset(_path)
 endif()
 
-if(DEFINED MODULE_PATH)
-  list(APPEND CMAKE_MODULE_PATH ${MODULE_PATH})
-else()
-  # If we're a submodule of the networking-recipe superproject, add its
-  # cmake modules directory to our module search path.
-  get_filename_component(_path "${PROJECT_SOURCE_DIR}/../../cmake" REALPATH)
-  if(EXISTS "${_path}/SelectTdiTarget.cmake")
-    list(APPEND CMAKE_MODULE_PATH ${_path})
-  endif()
-  unset(_path)
+# If we're a submodule of the networking-recipe superproject, add its
+# cmake modules directory to our module search path.
+get_filename_component(_path "${PROJECT_SOURCE_DIR}/../../cmake" REALPATH)
+if(EXISTS "${_path}/SelectTdiTarget.cmake")
+  list(APPEND CMAKE_MODULE_PATH ${_path})
 endif()
+unset(_path)
 
 #-----------------------------------------------------------------------
 # Target selection
