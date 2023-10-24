@@ -80,6 +80,13 @@ jobs:
           sudo tar -xzf $DEPS_FILENAME -C /
           rm $DEPS_FILENAME
 
+      - name: Build DPDK Krnlmon
+        run: |
+          export DEPEND_INSTALL=$DEPS_INSTALL_DIR
+          export SDE_INSTALL=$SDE_INSTALL_DIR
+          cmake -S . -B build -DTDI_TARGET=DPDK
+          cmake --build build -j4
+
       - name: Create pipeline.cmake file
         working-directory: krnlmon
         run: |
