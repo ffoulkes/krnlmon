@@ -81,7 +81,7 @@ jobs:
           rm $DEPS_FILENAME
 
       - name: Run unit tests
-        working-directory: recipe/krnlmon/krnlmon
+        working-directory: krnlmon
         run: |
           export DEPEND_INSTALL=$DEPS_INSTALL_DIR
           export SDE_INSTALL=$SDE_INSTALL_DIR
