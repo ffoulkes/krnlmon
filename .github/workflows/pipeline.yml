@@ -84,7 +84,7 @@ jobs:
         working-directory: krnlmon
         run: |
           _module_path=$GIT_REPOSITORY/recipe/cmake
-          echo "set(CMAKE_MODULE_PATH ${_module_path} CACHE PATH \"\") > pipeline.cmake
+          echo "set(CMAKE_MODULE_PATH ${_module_path} CACHE PATH \"\")" > pipeline.cmake
           echo "-----"
           cat pipeline.cmake
           echo "-----"
