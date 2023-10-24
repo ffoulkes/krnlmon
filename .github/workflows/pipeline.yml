@@ -85,15 +85,11 @@ jobs:
         run: |
           echo "set(CMAKE_MODULE_PATH \"$GITHUB_WORKSPACE/recipe/cmake\" CACHE PATH \"\")" > pipeline.cmake
           echo "set(SAI_SOURCE_DIR \"$GITHUB_WORKSPACE/SAI\" CACHE PATH \"\")" >> pipeline.cmake
-          echo "set(TDI_TARGET DPDK CACHE STRING \"\")" >> pipeline.cache
-          echo "-----"
-          cat pipeline.cmake
-          echo "-----"
 
       - name: Run unit tests
         working-directory: krnlmon
         run: |
           export DEPEND_INSTALL=$DEPS_INSTALL_DIR
           export SDE_INSTALL=$SDE_INSTALL_DIR
-          cmake -S . -B build -C pipeline.cmake
+          cmake -S . -B build -C pipeline.cmake -DTDI_TARGET=DPDK
           cmake --build build --target krnlmon-test
