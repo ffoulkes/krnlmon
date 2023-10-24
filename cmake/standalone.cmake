@@ -17,10 +17,6 @@ include(GNUInstallDirs)
 
 message(STATUS "Standalone krnlmon build")
 
-include(CMakePrintHelpers)
-cmake_print_variables(CMAKE_MODULE_PATH)
-cmake_print_variables(SAI_SOURCE_PATH)
-
 #-----------------------------------------------------------------------
 # Build type
 #-----------------------------------------------------------------------
