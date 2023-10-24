@@ -81,6 +81,7 @@ jobs:
           rm $DEPS_FILENAME
 
       - name: Build DPDK Krnlmon
+        working-directory: krnlmon
         run: |
           export DEPEND_INSTALL=$DEPS_INSTALL_DIR
           export SDE_INSTALL=$SDE_INSTALL_DIR
