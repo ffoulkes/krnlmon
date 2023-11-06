@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// changed; has formatting errors
+
 #include "switchapi/switch_config_int.h"
 #include "switchapi/switch_internal.h"
 
@@ -25,7 +27,8 @@ extern "C" {
 #define __FILE_ID__ SWITCH_CONFIG
 switch_config_info_t config_info;
 
-switch_status_t switch_config_init(switch_config_t *switch_config) {
+switch_status_t switch_config_init(
+    switch_config_t *switch_config) {
   switch_status_t status = SWITCH_STATUS_SUCCESS;
 
   if (config_info.config_inited) {
@@ -57,7 +60,7 @@ switch_status_t switch_config_free(void) {
   switch_status_t status = SWITCH_STATUS_SUCCESS;
 
   if (!config_info.config_inited) {
-    return status;
+  return status;
   }
 
   config_info.config_inited = FALSE;
@@ -67,8 +70,7 @@ switch_status_t switch_config_free(void) {
   return status;
 }
 
-switch_status_t switch_config_device_context_set(
-    switch_device_t device, switch_device_context_t *device_ctx) {
+switch_status_t switch_config_device_context_set(switch_device_t device, switch_device_context_t *device_ctx) {
   switch_status_t status = SWITCH_STATUS_SUCCESS;
 
   if (device_ctx && config_info.device_inited[device]) {

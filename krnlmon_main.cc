@@ -47,8 +47,8 @@ static void *krnlmon_stop_wrapper(void *arg) {
 }
 
 static void print_strerror(const char *msg, int err) {
-  char errbuf[64];
-  printf("%s: %s\n", msg, strerror_r(err, errbuf, sizeof(errbuf)));
+    char errbuf[64];
+    printf("%s: %s\n", msg, strerror_r(err, errbuf, sizeof(errbuf)));
 }
 
 int krnlmon_create_main_thread(absl::Notification* ready_sync) {
@@ -58,7 +58,8 @@ int krnlmon_create_main_thread(absl::Notification* ready_sync) {
      return -1;
   }
 
-  rc = pthread_setname_np(main_tid, "switchlink_main");
+  rc = pthread_setname_np(main_tid,
+                           "switchlink_main");
   if (rc) {
     print_strerror("Error naming switchlink_main thread", rc);
   }
