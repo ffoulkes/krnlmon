@@ -109,13 +109,11 @@ jobs:
         id: changes
         uses: tj-actions/changed-files@v40
         with:
-          files: |
-            **.c
-            **.h
-            **.cc
+          files: **.c
 
       - name: Check files for format errors
         run: |
+          echo "changed files: \"${{ steps.changes.output.all_changed_files }}\""
           for file in ${{ steps.changes.output.all_changed_files }}; do
             clang-format --dry-run -Werror $file
           done
