@@ -108,11 +108,11 @@ jobs:
       - name: Get list of changed Files
         id: changes
         uses: tj-actions/changed-files@v40
-          with:
-            files:
-              **.c
-              **.h
-              **.cc
+        with:
+          files: |
+            **.c
+            **.h
+            **.cc
 
       - name: Check files for format errors
         run: |
