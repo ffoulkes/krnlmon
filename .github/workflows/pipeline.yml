@@ -104,19 +104,19 @@ jobs:
     steps:
       - name: Check out krnlmon repository
         uses: actions/checkout@v3
-        with:
-          path: krnlmon
 
       - name: Get list of changed Files
         id: changes
         uses: tj-actions/changed-files@v40
         with:
-          path: krnlmon
+          files: |
+            **.c
+            **.h
+            **.cc
 
       - name: Check files for format errors
-        working-directory: krnlmon
         run: |
-          echo "changed files: \"${{ steps.changes.output.all_changed_files }}\""
-          for file in ${{ steps.changes.output.all_changed_files }}; do
+          echo "changed files: \"${{ steps.changes.outputs.all_changed_files }}\""
+          for file in ${{ steps.changes.outputs.all_changed_files }}; do
             clang-format --dry-run -Werror $file
           done
