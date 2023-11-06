@@ -109,7 +109,8 @@ jobs:
         id: changes
         uses: tj-actions/changed-files@v40
         with:
-          files: **.c
+          files: |
+            **.c
 
       - name: Check files for format errors
         run: |
