@@ -117,5 +117,5 @@ jobs:
       - name: Check files for format errors
         run: |
           for file in ${{ steps.changes.output.all_changed_files }}; do
-            clang-format --dry-run -Werror
+            clang-format --dry-run -Werror $file
           done
