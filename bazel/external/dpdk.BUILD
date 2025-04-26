@@ -2,6 +2,7 @@
 
 # Copyright 2020-present Open Networking Foundation
 # Copyright 2022-2024 Intel Corporation
+# Copyright 2025 Derek Foster
 # SPDX-License-Identifier: Apache-2.0
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
@@ -66,7 +67,6 @@ cc_library(
         "dpdk-bin/include/tdi/**/*.h",
         "dpdk-bin/include/tdi/**/*.hpp",
         "dpdk-bin/include/tdi_rt/**/*.h",
-        "dpdk-bin/include/tdi_rt/**/*.hpp",
     ]),
     strip_include_prefix = "dpdk-bin/include",
 )
