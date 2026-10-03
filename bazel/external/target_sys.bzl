@@ -1,13 +1,18 @@
 # Copyright 2024 Intel Corporation
+# Copyright 2026 Derek Foster
 # SPDX-License-Identifier: Apache-2.0
 
 def _impl(repository_ctx):
-    if "SDE_INSTALL" in repository_ctx.os.environ:
-        install_path = repository_ctx.os.environ["SDE_INSTALL"]
+    if "ES2K_INSTALL" in repository_ctx.os.environ:
+        sde_path = repository_ctx.os.environ["ES2K_INSTALL"]
+    elif "DPDK_INSTALL" in repository_ctx.os.environ:
+        sde_path = repository_ctx.os.environ["DPDK_INSTALL"]
     else:
+        fail("ES2K_INSTALL/DPDK_INSTALL not defined")
         repository_ctx.file("BUILD.bazel", "")
         return
-    repository_ctx.symlink(install_path, "target-sys")
+
+    repository_ctx.symlink(sde_path, "target-sys")
     repository_ctx.symlink(
         Label("@//bazel:external/target_sys.BUILD"),
         "BUILD.bazel",
@@ -16,5 +21,5 @@ def _impl(repository_ctx):
 configure_target_sys = repository_rule(
     implementation = _impl,
     local = True,
-    environ = ["SDE_INSTALL"],
+    environ = ["ES2K_INSTALL", "DPDK_INSTALL"],
 )

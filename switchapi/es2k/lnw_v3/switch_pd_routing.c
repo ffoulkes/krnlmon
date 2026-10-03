@@ -1,6 +1,7 @@
 /*
  * Copyright 2013-present Barefoot Networks, Inc.
  * Copyright 2022-2024 Intel Corporation.
+ * Copyright 2026 Derek Foster
  * SPDX-License-Identifier: Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1617,7 +1618,6 @@ switch_status_t switch_pd_ecmp_hash_table_entry(
   tdi_status_t status;
 
   tdi_id_t field_id_group_id = 0;
-  tdi_id_t field_id_meta_bit32_zero = 0;
   tdi_id_t field_id_meta_common_hash = 0;
   tdi_id_t action_id = 0;
   tdi_id_t data_field_id = 0;
